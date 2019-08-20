@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.button {
+    color: white !important;
+    text-transform: uppercase;
+    background: black;
+    padding: 0px 30px 0px 30px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.4s ease 0s;
+    display: block;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    color: #fff !important;
+    background: #8a8888;
+    /* letter-spacing: 1px; */
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+  }
+  .button:disabled{
+    background: #8a8888;
+    cursor: no-drop;
+  }
+  
+  .flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  
+  .flex-item{
+    padding-top: 7px;
+    cursor: pointer;
+    color: white !important;
+    background: black;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.4s ease 0s;
+    /* max-width: 300px; */
+    /* margin: auto; */
+    margin-right: 2px;
+  }
+  .flex-item:hover{
+    
+    color: #fff !important;
+    background: #8a8888;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+  }
+  .flex-item:disabled{
+    background: #8a8888;
+    cursor: no-drop;
+  }
+
+  th {
+    background-color: blanchedalmond;
+  }
+
+  a{
+    cursor: pointer;
+  }

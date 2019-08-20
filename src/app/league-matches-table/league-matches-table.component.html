@@ -1,0 +1,46 @@
+
+<div class="container">
+  <h1>רשימת משחקים</h1>
+  <div class="row" *ngIf="service.showSpinner">
+      <div class="col-5"></div>
+      <div class="col-2">
+          <mat-spinner></mat-spinner>
+      </div>
+      <div class="col-5"></div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>הערות</th>
+        <th>תוצאה</th>
+        <th>קבוצות</th>
+        <th>תאריך</th>
+        <th>'מס</th>
+        <th style="width: 100px"><button [disabled]="!_authService.loggedIn()" class="button" matTooltipPosition="below" matTooltip="הוסף משחק" (click)="onAddMatchSelect()">+</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of matches;  let i = index" [attr.data-index]="i">
+        <td>{{match.Comment}}</td>
+        <td *ngIf="wasOccurred(match)"><span [ngStyle]="winnerB(match)">{{match.GoalsTeamB}}</span> - <span [ngStyle]="winnerA(match)">{{match.GoalsTeamA}}</span></td>
+        <td *ngIf="!wasOccurred(match)">טרם התקיים</td>
+
+        <td><span [ngStyle]="winnerA(match)">{{match.TeamA}}</span> - <span [ngStyle]="winnerB(match)">{{match.TeamB}}</span></td>
+        <td>{{match.Date | date:'HH:mm'}} <b>|</b> {{match.Date | date:'dd/MM/yy'}} <b>|</b> {{match.Day}}</td>
+        <td>{{i+1}}</td>
+        <td style="width: 100px" class="flex-container">
+          <button [disabled]="!_authService.loggedIn()" class="flex-item" matTooltipPosition="below" matTooltip="ערוך משחק" (click)="onEditSelect(match)">
+            <mat-icon>
+              edit
+            </mat-icon>
+          </button>
+            <button [disabled]="!_authService.loggedIn()" class="flex-item" matTooltipPosition="below" matTooltip="מחק משחק" (click)="onDeleteSelect(match)">
+              <mat-icon>
+              delete_forever
+            </mat-icon>
+            </button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

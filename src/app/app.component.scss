@@ -1,0 +1,63 @@
+body, body button, html, html button {
+  font-family: "Assistant",sans-serif;
+}
+
+.navbar{
+  // overflow-x: hidden;
+  // overflow-y: hidden;
+  justify-content: space-between;
+  direction: rtl;
+  height: 6rem;
+}
+span{
+  padding-right: 1rem;
+
+}
+
+img{
+  background: white;
+  font-size: 25px;
+  text-align: right;
+  border-radius:50%;
+  margin-top: -0.85rem; 
+  // margin-right: -3.5rem;
+  display: inline-block;
+  padding: 10px;
+  width: 175px;
+  height: 10rem;
+}
+
+  
+a{
+  color: white !important;
+  text-transform: uppercase;
+  // text-decoration: none;
+  background: rgb(60, 178, 204);
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.4s ease 0s;
+  // display: block;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+a:hover {
+  color: #fff !important;
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+  }
+
+
+// }
+
+// img {
+//   display: inline-flex;
+// }

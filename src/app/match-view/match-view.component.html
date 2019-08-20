@@ -1,0 +1,87 @@
+<form [formGroup]="matchInfo" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <div class="card-header" style="text-align: center; background-color:blanchedalmond;">פרטי המשחק</div>
+    <div class="card-body">
+      <div class="row show-grid mx-auto">
+        <div class="col-6 col-sm-6">
+          <div><label for="TeamB">:'קבוצה ב</label>
+          </div>
+          <input type="text" id="TeamB" class="form-control"  formControlName="TeamB" placeholder="'קבוצה ב" 
+                  [ngClass]="{'form-control-danger': TeamB.invalid && (TeamB.dirty || TeamB.touched)}">
+            
+        </div>
+        <div class="col-sm-6">
+          <div><label for="TeamA">:'קבוצה א</label>
+          </div>
+          <input type="text" id="TeamA"  class="form-control" formControlName="TeamA" placeholder="'קבוצה א" 
+                  [ngClass]="{'form-control-danger': TeamA.invalid && (TeamA.dirty || TeamA.touched)}">
+            
+        </div>
+      </div>
+      <div class="row show-grid mx-auto">
+        <div class="col-6 col-sm-6">
+          <div><label for="Day">:יום</label>
+          </div>
+          <input type="text" id="Day" class="form-control"  formControlName="Day" placeholder="יום" 
+                  [ngClass]="{'form-control-danger': Day.invalid && (Day.dirty || Day.touched)}">
+            
+        </div>
+        <div class="col-sm-6" formGroupName="Time">
+          <div><label for="Hour">:שעה</label>
+          </div>
+          <input type="text" id="Hour"  class="form-control" formControlName="Hour" placeholder="שעה" 
+                  [ngClass]="{'form-control-danger': Hour.invalid && (Hour.dirty || Hour.touched)}">
+                  
+          <div><label for="Minute">:שעה</label>
+          </div>
+          <input type="text" id="Minute"  class="form-control" formControlName="Minute" placeholder="דקות" 
+                  [ngClass]="{'form-control-danger': Minute.invalid && (Minute.dirty || Minute.touched)}">
+                    
+            
+        </div>
+      </div>
+      <div class="row show-grid mx-auto">
+          <div class="col-6 col-sm-6">
+              <div><label for="GoalsTeamB">:'שערים קבוצה ב</label>
+              </div>
+              <input type="text" id="GoalsTeamB" class="form-control"  formControlName="GoalsTeamB" placeholder="'שערים קבוצה ב" 
+                      [ngClass]="{'form-control-danger': GoalsTeamB.invalid && (GoalsTeamB.dirty || GoalsTeamB.touched)}">
+            </div>
+
+        <div class="col-sm-6">
+          <div><label for="GoalsTeamA">:'שערים קבוצה א</label>
+          </div>
+          <input type="text" id="GoalsTeamA"  class="form-control" formControlName="GoalsTeamA" placeholder="'שערים קבוצה א" 
+                  [ngClass]="{'form-control-danger': GoalsTeamA.invalid && (GoalsTeamA.dirty || GoalsTeamA.touched)}">
+        </div>
+      </div>
+
+      <div class="row show-grid mx-auto">
+          <div class="col-6 col-sm-6">
+              <div><label for="datePicker">:תאריך</label>
+              </div>
+              <mat-form-field>
+              <input matInput [matDatepicker]="datePicker">
+              <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
+              <mat-datepicker #datePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+        <div class="col-sm-6">
+          <div><label for="Comment">:הערות</label>
+          </div>
+          <input type="text" id="Comment"  class="form-control" formControlName="Comment" placeholder="הערות" 
+                  [ngClass]="{'form-control-danger': Comment.invalid && (Comment.dirty || Comment.touched)}">
+        </div>
+      </div>
+      <div class="row show-grid mx-auto">
+        <div class="col-sm-6">
+          <a class="navbar-brand" (click)="onSubmit()">שמור</a>
+        </div>
+        <div class="col-sm-6">
+          <a class="navbar-brand" (click)="onBackSelect()" >חזור</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

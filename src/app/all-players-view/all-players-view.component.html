@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>רשימת שחקנים</h1>
+  <div class="row" *ngIf="service.showSpinner">
+      <div class="col-5"></div>
+      <div class="col-2">
+          <mat-spinner></mat-spinner>
+      </div>
+      <div class="col-5"></div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>אדומים</th>
+        <th>צהובים</th>
+        <th>שערים</th>
+        <th>מס' חולצה</th>
+        <th>קבוצה</th>
+        <th>משפחה</th>
+        <th>שם</th>
+        <th style="width: 100px"><button class="button" [disabled]="!_authService.loggedIn()" matTooltipPosition="below" matTooltip="הוסף שחקן" (click)="onAddPlayerSelect()">+</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players"  [ngStyle]="setStyle(player)">
+        <td>{{player.YellowCards}}</td>
+        <td>{{player.RedCards}}</td>
+        <td>{{player.Goals}}</td>
+        <td>{{player.TShirtNumber}}</td>
+        <td>{{player.TeamName}}</td>
+        <td>{{player.LastName}}</td>
+        <td>
+          <span *ngIf="player.Coordinator; else elseBlock" matBadgeOverlap="false" matBadge="רכז">{{player.FirstName}}</span>
+          <ng-template #elseBlock>
+              {{player.FirstName}}
+          </ng-template>
+        </td>
+        <td class="flex-container" style="width: 100px">
+            <button class="flex-item" [disabled]="!_authService.loggedIn()" matTooltipPosition="below" matTooltip="ערוך שחקן" (click)="onEditSelect(player)">
+              <mat-icon>
+                edit
+              </mat-icon>
+            </button>
+            <button class="flex-item" [disabled]="!_authService.loggedIn()" matTooltipPosition="below" matTooltip="מחק שחקן" (click)="onDeleteSelect(player)">
+                <mat-icon>
+                delete_forever
+              </mat-icon>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

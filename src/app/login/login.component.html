@@ -1,0 +1,33 @@
+<form [formGroup]="UserInfo">
+  <div class="card">
+    <div class="card-header" style="text-align: center; background-color:blanchedalmond;">התחברות</div>
+    <div class="card-body">
+      <div class="row show-grid mx-auto">
+
+          <mat-form-field class="col-12" floatlabel="auto">
+            <mat-label>
+              שם משתמש
+            </mat-label>
+            <mat-select formControlName="username" 
+            [ngClass]="{'form-control-danger': username.errors?.forbiddenSelect && (username.dirty || username.touched)}">
+          <mat-option disabled selected value="default"> --- בחר אפשרות --- </mat-option>
+          <mat-option *ngFor="let user of users" value="{{user.username}}">{{user.username}}</mat-option>         
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-12" floatlabel="auto">
+            <mat-label>
+              סיסמה
+            </mat-label>
+            <input matInput type="password"  formControlName="password"
+                    [ngClass]="{'form-control-danger': password.invalid && (password.dirty || password.touched)}">
+          </mat-form-field>
+      </div>
+      <mat-dialog-actions>
+        <button mat-raised-button (click)="onSubmit()" [disabled]="UserInfo.invalid">התחבר</button>
+        <button mat-raised-button (click)="onCloseSelect()">סגור</button>
+    </mat-dialog-actions>
+    </div>
+  </div>
+</form>
+

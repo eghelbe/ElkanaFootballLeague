@@ -1,0 +1,23 @@
+<form [formGroup]="TeamInfo">
+  <div class="card">
+    <div mat-dialog-title class="card-header" style="text-align: center; background-color:blanchedalmond;">פרטי הקבוצה</div>
+    <div class="card-body">
+      <mat-dialog-content>
+          <mat-form-field class="col-12" floatlabel="auto">
+            <mat-label>
+              שם הקבוצה
+            </mat-label>
+            <input matInput type="text" formControlName="Name"
+                    [ngClass]="{'form-control-danger': Name.invalid && (Name.dirty || Name.touched)}">
+          </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-raised-button (click)="onSubmit()" [disabled]="TeamInfo.invalid">שמור</button>
+        <button mat-raised-button (click)="onCloseSelect()">סגור</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</form>
+
+    <!-- <div class="card-header" style="text-align: center; background-color:blanchedalmond;">פרטי הקבוצה</div> -->
+    <!-- <div class="card-body"> -->

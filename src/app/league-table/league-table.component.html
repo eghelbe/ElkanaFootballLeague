@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>טבלת ליגה</h1>
+  <div class="row" *ngIf="service.showSpinner">
+    <div class="col-5"></div>
+    <div class="col-2">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="col-5"></div>
+  </div>
+      
+  
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>נקודות</th>
+        <th>הפרש</th>
+        <th>יחס</th>
+        <th>הפסדים</th>
+        <th>תיקו</th>
+        <th>נצחונות</th>
+        <th>משחקים</th>
+        <th>קבוצה</th>
+        <th>מקום</th>
+        <th style="width: 140px"><button class="button" [disabled]="!_authService.loggedIn()" matTooltipPosition="below" matTooltip="הוסף קבוצה" (click)="onAddTeamSelect()">+</button></th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr *ngFor="let team of teams"  [ngStyle]="setStyle(team)">
+        <td>{{team.Points}}</td>
+        <td>{{team.GoalsDiff}}</td>
+        <td>{{team.GoalsFor}}-{{team.GoalsAgainst}}</td>
+        <td>{{team.Loses}}</td>
+        <td>{{team.Ties}}</td>
+        <td>{{team.Wins}}</td>
+        <td>{{team.Games}}</td>
+        <td>{{team.Name}}</td>
+        <td>{{team.Position}}</td>
+        <td style="width: 140px" class="flex-container">
+          <button class="flex-item" matTooltipPosition="below" matTooltip="ערוך שחקנים" (click)="onEditSelect(team)">
+            <mat-icon>
+              account_box
+          </mat-icon>
+          </button>
+          <button [disabled]="!_authService.loggedIn()" class="flex-item" matTooltipPosition="below" matTooltip="שינוי שם לקבוצה" (click)="onEditTeamSelect(team)">
+            <mat-icon>
+            edit
+          </mat-icon>
+          </button>
+          <button [disabled]="!_authService.loggedIn()" class="flex-item" matTooltipPosition="below" matTooltip="מחק את הקבוצה" (click)="onDeleteSelect(team)">
+            <mat-icon>
+            delete_forever
+          </mat-icon>
+          </button>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <button matButton (click)="onCleanUpSelect()">CleanUp</button> -->
+  <!-- <button matButton (click)="export()">Export to Excel</button> -->
+</div>

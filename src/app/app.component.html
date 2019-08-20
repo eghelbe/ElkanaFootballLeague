@@ -1,0 +1,28 @@
+
+<div style="height: 3rem;"></div>
+
+<mat-toolbar style="background-color:rgb(17, 92, 131);" color="primary" class="navbar">
+        <img src="assets/img/image1554014457.jpg">
+    <div style="font-size: 2rem;">
+            
+        ליגת קט-רגל שכונות אלקנה 2019
+    </div>
+    <div>
+        <a class="navbar-brand" routerLink="/league-table" routerLinkActive="active">טבלת ליגה</a>
+        <a class="navbar-brand" routerLink="/league-matches-table" routerLinkActive="active">רשימת משחקים</a>
+        <a class="navbar-brand" routerLink="/all-players-view" routerLinkActive="active">רשימת שחקנים</a>
+        <a class="navbar-brand" routerLink="/top-scorer" routerLinkActive="active">מלך השערים</a>
+        <a class="navbar-brand" routerLink="/regulations" routerLinkActive="active">תקנון</a>
+    </div>
+    <div style="padding-left: 1rem;">
+        <a class="navbar-brand" *ngIf="!_authService.loggedIn()" (click)="onLoginSelect()" routerLinkActive="active">התחבר <mat-icon>person_pin</mat-icon></a>
+        <a class="navbar-brand" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">התנתק <mat-icon>logout</mat-icon></a>
+    </div>
+</mat-toolbar>
+
+
+
+
+<router-outlet></router-outlet>
+
+

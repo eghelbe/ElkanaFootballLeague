@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row" *ngIf="service.showSpinner">
+        <div class="col-5"></div>
+        <div class="col-2">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div class="col-5"></div>
+      </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <h3>מלך השערים</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>שערים</th>
+                <th>קבוצה</th>
+                <th>משפחה</th>
+                <th>שם</th>
+                <th>מקום</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let player of players | slice:0:5; let i = index" [attr.data-index]="i"  [ngStyle]="setStyleScorer(i)">
+                <td>{{player.Goals}}</td>
+                <td>{{player.TeamName}}</td>
+                <td>{{player.LastName}}</td>
+                <td>{{player.FirstName}}</td>
+                <td>{{i+1}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row">
+      <div class="col-6">
+          <h3>מלך הצהובים</h3>
+          <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>צהובים</th>
+                  <th>קבוצה</th>
+                  <th>משפחה</th>
+                  <th>שם</th>
+                  <th>מקום</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let Yellow of topYellow | slice:0:5; let i = index"  [ngStyle]="setStyleYellow(i)">
+                  <td>{{Yellow.YellowCards}}</td>
+                  <td>{{Yellow.TeamName}}</td>
+                  <td>{{Yellow.LastName}}</td>
+                  <td>{{Yellow.FirstName}}</td>
+                  <td>{{i+1}}</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    <div class="col-6">
+      <h3>מלך האדומים</h3>
+        <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>אדומים</th>
+                <th>קבוצה</th>
+                <th>משפחה</th>
+                <th>שם</th>
+                <th>מקום</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let red of topRed | slice:0:5; let i = index" [ngStyle]="setStyleRed(i)">
+                <td>{{red.RedCards}}</td>
+                <td>{{red.TeamName}}</td>
+                <td>{{red.LastName}}</td>
+                <td>{{red.FirstName}}</td>
+                <td>{{i+1}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+</div>

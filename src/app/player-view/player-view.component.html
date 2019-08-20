@@ -1,0 +1,90 @@
+<form [formGroup]="PlayerInfo">
+  <div class="card">
+    <div class="card-header" style="text-align: center; background-color:blanchedalmond;">פרטי השחקן</div>
+    <div class="card-body">
+      <div class="row show-grid mx-auto">
+        <div class="col-6 col-sm-6">
+          <div><label for="FirstName">:שם פרטי</label>
+          </div>
+          <input type="text" id="FirstName" class="form-control"  formControlName="FirstName" placeholder="שם פרטי" 
+                  [ngClass]="{'form-control-danger': FirstName.invalid && (FirstName.dirty || FirstName.touched)}">
+            
+        </div>
+        <div class="col-sm-6">
+          <div><label for="LastName">:שם משפחה</label>
+          </div>
+          <input type="text" id="LastName"  class="form-control" formControlName="LastName" placeholder="שם משפחה" 
+                  [ngClass]="{'form-control-danger': LastName.invalid && (LastName.dirty || LastName.touched)}">
+            
+        </div>
+      </div>
+      <div class="row show-grid mx-auto">
+
+          <div class="col-6 col-sm-6">
+              <div><label for="TeamName">:קבוצה</label>
+              </div>
+              
+              <select class="form-control" id="TeamName" formControlName="TeamName" shape="rectangle" outline status="primary" size="medium"
+              [ngClass]="{'form-control-danger': TeamName.errors?.forbiddenSelect && (TeamName.dirty || TeamName.touched)}">
+                <option disabled selected value=null> --- בחר --- </option>
+                <option *ngFor="let team of Teams" value="{{team.Name}}">{{team.Name}}</option>                 
+              </select>
+          </div>
+        <div class="col-sm-6">
+          <div><label for="TShirtNumber">:מס' חולצה</label>
+          </div>
+          <input type="text" id="TShirtNumber"  class="form-control" formControlName="TShirtNumber" placeholder="מס' חולצה" 
+                  [ngClass]="{'form-control-danger': TShirtNumber.invalid && (TShirtNumber.dirty || TShirtNumber.touched)}">
+            
+        </div>
+      </div>
+      <div class="row show-grid mx-auto">
+        <div class="col-6 col-sm-6">
+          <div><label for="Goals">:שערים</label>
+          </div>
+          <input type="text" id="Goals" class="form-control"  formControlName="Goals" placeholder="שערים" 
+                  [ngClass]="{'form-control-danger': Goals.invalid && (Goals.dirty || Goals.touched)}">
+        </div>
+        <div class="col-sm-6">
+          <div><label for="RedCards">:כרטיסים אדומים</label>
+          </div>
+          <input type="text" id="RedCards"  class="form-control" formControlName="RedCards" placeholder="כרטיסים אדומים" 
+                  [ngClass]="{'form-control-danger': RedCards.invalid && (RedCards.dirty || RedCards.touched)}">
+        </div>
+      </div>
+
+      <div class="row show-grid mx-auto">
+        <div class="col-6 col-sm-6">
+          <div><label for="YellowCards">:כרטיסים צהובים</label>
+          </div>
+          <input type="text" id="YellowCards" class="form-control"  formControlName="YellowCards" placeholder="כרטיסים צהובים" 
+                  [ngClass]="{'form-control-danger': YellowCards.invalid && (YellowCards.dirty || YellowCards.touched)}">
+        </div>
+        <div class="col-sm-6">
+          <div><label for="Phone">:מס' פלאפון</label>
+          </div>
+          <input type="text" id="Phone"  class="form-control" formControlName="Phone" placeholder="מס' פלאפון" 
+                  [ngClass]="{'form-control-danger': Phone.invalid && (Phone.dirty || Phone.touched)}">
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div><label for="Coordinator">:רכז קבוצה</label>
+        </div>
+        
+        <select class="form-control" id="Coordinator" formControlName="Coordinator" shape="rectangle" outline status="primary" size="medium"
+        [ngClass]="{'form-control-danger': Coordinator.errors?.forbiddenSelect && (Coordinator.dirty || Coordinator.touched)}">
+      <option disabled selected value=null> --- בחר --- </option>
+      <option value=true>כן</option>
+      <option value=false>לא</option>                    
+    </select>
+      </div>
+
+      <mat-dialog-actions>
+          <button mat-raised-button (click)="onSubmit()" [disabled]="PlayerInfo.invalid">שמור</button>
+          <button mat-raised-button (click)="onCloseSelect()">סגור</button>
+      </mat-dialog-actions>
+
+    </div>
+  </div>
+</form>
