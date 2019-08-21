@@ -73,3 +73,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   a{
     cursor: pointer;
   }
+
+  .footer {
+    position: fixed;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+  }
