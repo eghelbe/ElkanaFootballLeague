@@ -16,7 +16,8 @@ import { DialogComponent } from './dialog/dialog.component';
   providedIn: 'root'
 })
 export class LeagueService {
-  private _serverUrl = "http://localhost:3000/";
+  // private _serverUrl = "http://localhost:3000/";
+  private _serverUrl = "https://elkanafootballleagueserver.herokuapp.com/";
   //Post Urls
   private _apiUrl = this._serverUrl + "api/";
   //Team
@@ -257,6 +258,8 @@ export class LeagueService {
           TeamA.Games = TeamA.Wins + TeamA.Loses + TeamA.Ties;
           TeamA.GoalsDiff = TeamA.GoalsFor - TeamA.GoalsAgainst;
           TeamA.Points = (TeamA.Wins * 3) + TeamA.Ties;
+          console.log('TeamA:');
+          console.log(TeamA);
           this.updateTeam(TeamA).subscribe(
             res => this.openSnackBar(res, 'dismiss'),
             err => {this.openSnackBar(err.error, 'dismiss');
@@ -280,6 +283,8 @@ export class LeagueService {
           TeamB.Games = TeamB.Wins + TeamB.Loses + TeamB.Ties;
           TeamB.GoalsDiff = TeamB.GoalsFor - TeamB.GoalsAgainst;
           TeamB.Points = (TeamB.Wins * 3) + TeamB.Ties;
+          console.log('TeamB:');
+          console.log(TeamB);
           this.updateTeam(TeamB).subscribe(
             res => this.openSnackBar(res, 'dismiss'),
             err => {this.openSnackBar(err.error, 'dismiss');
@@ -362,39 +367,44 @@ export class LeagueService {
           TeamA.GoalsDiff = TeamA.GoalsFor - TeamA.GoalsAgainst;
           TeamA.Points = (TeamA.Wins * 3) + TeamA.Ties;
           this.updateTeam(TeamA).subscribe(
-            res => this.openSnackBar(res, 'dismiss'),
-            err =>{this.openSnackBar(err.error, 'dismiss');
-            console.error(err);
-          });
-        },
-        err => console.error(err)
-      );
-      this.getTeamByName(oldMatch.TeamB).subscribe(
-        res => {
-          let TeamB: Team = res;
-          TeamB.GoalsAgainst = TeamB.GoalsAgainst - oldMatch.GoalsTeamA;
-          TeamB.GoalsFor = TeamB.GoalsFor - oldMatch.GoalsTeamB;
-          if(oldMatch.winner == TeamB.Name){
-            TeamB.Wins = TeamB.Wins - 1;
-          } else if( oldMatch.winner == "Tie"){
-            TeamB.Ties = TeamB.Ties - 1;
-          } else {
-            TeamB.Loses = TeamB.Loses - 1;
-          }
-          TeamB.Games = TeamB.Wins + TeamB.Loses + TeamB.Ties;
-          TeamB.GoalsDiff = TeamB.GoalsFor - TeamB.GoalsAgainst;
-          TeamB.Points = (TeamB.Wins * 3) + TeamB.Ties;
-          this.updateTeam(TeamB).subscribe(
             res => {
               this.openSnackBar(res, 'dismiss');
-              this.matchAdded(match);
-          },
+              this.getTeamByName(oldMatch.TeamB).subscribe(
+                res => {
+                  let TeamB: Team = res;
+                  TeamB.GoalsAgainst = TeamB.GoalsAgainst - oldMatch.GoalsTeamA;
+                  TeamB.GoalsFor = TeamB.GoalsFor - oldMatch.GoalsTeamB;
+                  if(oldMatch.winner == TeamB.Name){
+                    TeamB.Wins = TeamB.Wins - 1;
+                  } else if( oldMatch.winner == "Tie"){
+                    TeamB.Ties = TeamB.Ties - 1;
+                  } else {
+                    TeamB.Loses = TeamB.Loses - 1;
+                  }
+                  TeamB.Games = TeamB.Wins + TeamB.Loses + TeamB.Ties;
+                  TeamB.GoalsDiff = TeamB.GoalsFor - TeamB.GoalsAgainst;
+                  TeamB.Points = (TeamB.Wins * 3) + TeamB.Ties;
+                  this.updateTeam(TeamB).subscribe(
+                    res => {
+                      this.openSnackBar(res, 'dismiss');
+                      this.matchAdded(match);
+                  },
+                    err =>{this.openSnackBar(err.error, 'dismiss');
+                    console.error(err);
+                  });
+                },
+                err => console.error(err)
+              );
+            },
             err =>{this.openSnackBar(err.error, 'dismiss');
             console.error(err);
           });
         },
         err => console.error(err)
       );
+
+    } else {
+      this.matchAdded(match);
     }
   }
 }

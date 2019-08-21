@@ -8,7 +8,7 @@ import { LeagueService } from './league.service';
 })
 export class AuthService {
 
-  private _loginUrl = "http://localhost:3000/api/login";
+  private _loginUrl = "https://elkanafootballleagueserver.herokuapp.com/api/login";
 
   constructor(private http: HttpClient, private _router:Router, private service:LeagueService) { }
 
